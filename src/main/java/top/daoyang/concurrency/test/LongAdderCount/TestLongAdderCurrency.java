@@ -1,4 +1,4 @@
-package top.daoyang.concurrency.test;
+package top.daoyang.concurrency.test.LongAdderCount;
 
 import lombok.extern.slf4j.Slf4j;
 import top.daoyang.concurrency.annotation.NotThreadSafe;
@@ -7,16 +7,17 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.atomic.LongAdder;
 
 @Slf4j
 @NotThreadSafe
-public class TestCurrency {
+public class TestLongAdderCurrency {
 
     private static int clientTotal = 5000;
 
     private static int threadTotal = 50;
 
-    private static int count = 0;
+    private static LongAdder count = new LongAdder();
 
     public static void main(String[] args) throws InterruptedException {
         ExecutorService executorService = Executors.newCachedThreadPool();
@@ -41,6 +42,6 @@ public class TestCurrency {
     }
 
     public static void add() {
-        count++;
+        count.increment();
     }
 }

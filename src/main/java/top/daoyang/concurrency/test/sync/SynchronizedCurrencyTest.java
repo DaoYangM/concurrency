@@ -1,4 +1,4 @@
-package top.daoyang.concurrency.test;
+package top.daoyang.concurrency.test.sync;
 
 import lombok.extern.slf4j.Slf4j;
 import top.daoyang.concurrency.annotation.NotThreadSafe;
@@ -10,7 +10,7 @@ import java.util.concurrent.Semaphore;
 
 @Slf4j
 @NotThreadSafe
-public class TestCurrency {
+public class SynchronizedCurrencyTest {
 
     private static int clientTotal = 5000;
 
@@ -40,7 +40,7 @@ public class TestCurrency {
         log.info("count: {}",  count);
     }
 
-    public static void add() {
+    private static synchronized void add() {
         count++;
     }
 }
